@@ -1,0 +1,26 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Hoop Infinity Aimbot", "Ocean")
+
+--Main
+local Tab = Window:NewTab("Aimbot")
+local Section = Tab:NewSection("Press Q to shoot with Aimbot")
+Section:NewButton("Aimbot", "Click this to enable Aimbot", function()
+game:GetService("UserInputService").InputBegan:Connect(function(i, gpe)
+  if not gpe and i.KeyCode == Enum.KeyCode.Q then
+   keypress(0x45)
+wait(0.70)
+keyrelease(0x45)
+  end
+end)
+end)
+
+--Credits
+Section:NewDropdown("Credits", "Click This for Credits of GUI", {"Creation of Aimbot and GUI: PotterDareDevil", "Library: Kavo Library"}, function(currentOption)
+    print(currentOption)
+end)
+
+--close UI
+
+Section:NewKeybind("Close UI", "You can close the UI with this keybind", Enum.KeyCode.F, function()
+	Library:ToggleUI()
+end)
